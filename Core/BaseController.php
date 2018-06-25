@@ -12,6 +12,7 @@ namespace Core;
 class BaseController
 {
     protected $params = [];
+    protected $user = "";
 
     public function __construct($params)
     {
@@ -32,7 +33,15 @@ class BaseController
     }
 
     protected function before() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
+        if (!isset($_SESSION["user"])) {
+            $_SESSION["user"] = "";
+        }
+
+        $this->user = $_SESSION["user"];
     }
 
     protected function after() {

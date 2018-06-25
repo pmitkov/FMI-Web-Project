@@ -13,6 +13,6 @@ use \Core\BaseView;
 class LandingPage extends \Core\BaseController
 {
     public function indexAction() {
-        BaseView::render("Header/header.php");
+        BaseView::render("Header/header.php", ["user" => $this->user]);
     }
 }

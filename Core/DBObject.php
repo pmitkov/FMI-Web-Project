@@ -10,6 +10,7 @@ namespace Core;
 
 use \App\Config;
 
+use mysqli;
 
 class DBObject
 {

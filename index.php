@@ -18,6 +18,9 @@ set_exception_handler("Core\Error::exceptionHandler");
 $router = new Core\Router();
 
 $router->add("", ["controller" => "LandingPage", "action" => "index"]);
+$router->add("login", ["controller" => "Login", "action" => "login"]);
+$router->add("logout", ["controller" => "Logout", "action" => "logout"]);
+$router->add("home", ["controller" => "Home", "action" => "home"]);
 $router->add("{controller}/{action}");
 
 $router->dispatch($_SERVER["QUERY_STRING"]);

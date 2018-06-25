@@ -1,0 +1,90 @@
+/* form styles */
+.registration {
+    width: 50%;
+    background-color: #F5F5F0;
+    border: 1.5px solid #9F9E9F;
+    margin: 0 auto;
+}
+
+.title {
+    padding: 7px;
+}
+
+.title span {
+    font-size: 13px;
+}
+
+button.primary {
+    font-size: 10px;
+}
+
+button.primary:disabled {
+    background-color: darkgray;
+}
+
+#registration-input-container, .submit {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#registration-input-container {
+    padding-top: 10px;
+}
+
+.submit {
+    padding-bottom: 10px;
+}
+
+#registration-input-container input:not(.invalid)::placeholder {
+    color: #BDBDBD;
+    font-size: 12px;
+}
+
+.registration input, .registration button {
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    box-sizing : border-box;
+}
+
+.registration input:not(.invalid), .registration button {
+    border: 1.5px solid #D5D5D4;
+}
+
+.registration button {
+    border: none;
+}
+
+.primary {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #0f2a99;
+    color: white;
+}
+
+.control-label {
+    display: none;
+}
+
+.invalid:not(.pristine) {
+    border: 2px solid red;
+}
+
+.invalid:not(.pristine)::-webkit-input-placeholder {
+    color:rgba(255, 0, 0, 0.3);;
+}
+
+.invalid:not(.pristine)::-moz-placeholder {
+    color:rgba(255, 0, 0, 0.3);;
+}
+
+.invalid:not(.pristine)::placeholder {
+    color:rgba(255, 0, 0, 0.3);;
+}
+
+h3 {
+    text-align: center;
+}

@@ -11,6 +11,8 @@ namespace Core;
 class BaseView
 {
     public static function render($view, $params = []) {
+        extract($params, EXTR_SKIP);
+
         $file = dirname(__DIR__) . "/App/Views/$view";
 
         if (is_readable($file)) {
