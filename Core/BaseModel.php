@@ -11,24 +11,38 @@ namespace Core;
 
 class BaseModel
 {
+    protected $table_name;
+    public $conn;
+
     function __construct() {
-        $this->conn = DBConnection::get_instance()->conn;
+        $this->conn = DBObject::get_instance()->conn;
     }
 
-    function get_all() {
-        $sql = "SELECT * FROM {$this->table_name}";
-        $query = $this->conn->query($sql) or die("query failed");
+    public function getAll() {
+        $query = "SELECT * FROM {$this->table_name}";
+        $result = $this->conn->query($query);
+
+        if (!$result) {
+            throw new \Exception($this->conn->error);
+        }
+
         $result = array();
-        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+
+        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $result[] = $row;
         }
 
         return $result;
     }
 
-    function get($id) {
-        $sql = "SELECT * FROM {$this->table_name} where id = $id";
-        $query = $this->conn->query($sql) or die("query failed!");
-        return $query->fetch(PDO::FETCH_ASSOC);
+    public function get($id) {
+        $query = "SELECT * FROM {$this->table_name} where id = $id";
+        $result = $this->conn->query($query);
+
+        if (!$result) {
+            throw new \Exception($this->conn->error);
+        }
+
+        return $result->fetch_array(MYSQLI_ASSOC);
     }
 }

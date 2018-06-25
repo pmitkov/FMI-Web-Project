@@ -6,11 +6,18 @@
  * Time: 20:54
  */
 
-use Core\Router;
+require "vendor/autoload.php";
 
-$router = new Router();
+/*
+ *  Error and Exception handling
+ **/
+error_reporting(E_ALL);
+set_error_handler("Core\Error::errorHandler");
+set_exception_handler("Core\Error::exceptionHandler");
 
-$router->add("", ["controller" => "Home", "action" => "index"]);
+$router = new Core\Router();
+
+$router->add("", ["controller" => "LandingPage", "action" => "index"]);
 $router->add("{controller}/{action}");
 
 $router->dispatch($_SERVER["QUERY_STRING"]);

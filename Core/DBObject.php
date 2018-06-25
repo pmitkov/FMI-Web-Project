@@ -8,6 +8,8 @@
 
 namespace Core;
 
+use \App\Config;
+
 
 class DBObject
 {
@@ -15,15 +17,18 @@ class DBObject
 
     private static $instance = null;
 
-    function __construct()
+    private function __construct()
     {
-        $config = include("config.php");
+        $dbhost = Config::DB_HOST;
+        $dbname = Config::DB_NAME;
+        $dbuser = Config::DB_USER;
+        $dbpass = Config::DB_PASSWORD;
 
-        $this->conn = new PDO(
-            "mysql:host={$config['DB']['HOST']};dbname={$config['DB']['DATABASE']};charset=UTF8",
-            $config['DB']['USER'],
-            $config['DB']['PASS']
-        );
+        $this->conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+
+        if ($this->conn->connect_error) {
+            throw new \Exception("Failed to connect to database");
+        }
     }
 
     static function get_instance() {

@@ -73,7 +73,7 @@ class Router
                 }
             }
         } else {
-            throw new \Exception("Noroute matched.", 404);
+            throw new \Exception("No route matched.", 404);
         }
     }
 
