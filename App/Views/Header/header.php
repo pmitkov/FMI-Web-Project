@@ -42,17 +42,22 @@
                     </div>
 
                     <div class="navbar-actions">
-                        <a href="logout" class="navbar-item">
+                        <a href="/user-profile" class="navbar-item">
                             <div class="navbar-label default-styles"><?php echo "Hello, $user" ?></div>
                         </a>
-                        <a href="logout" class="navbar-item">
+                        <a href="/logout" class="navbar-item">
                             <div class="navbar-label default-styles">Logout</div>
                         </a>
                     </div>
                 <?php else: ?>
                     <div class="navbar-actions">
-                        <a href="login" class="navbar-item">
+                        <a href="/login" class="navbar-item">
                             <div class="navbar-label default-styles">Login</div>
+                        </a>
+                    </div>
+                    <div class="navbar-actions">
+                        <a href="/register" class="navbar-item">
+                            <div class="navbar-label default-styles">Register</div>
                         </a>
                     </div>
                 <?php endif ?>

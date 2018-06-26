@@ -1,14 +1,19 @@
 <?php if ($error): ?>
-    <h3><?php echo $error ?></h3>
+    <div class="alert">
+        <span class="closebtn">&times;</span>
+        <strong>Error!</strong> <?php echo $error ?>
+    </div>
 <?php endif ?>
-<div class="registration">
+<div class="login">
     <script type="text/javascript">
-        function validatePassword() {
-            var input = document.getElementById("password");
-
+        function makeDirty(input) {
             if (input.classList.contains("pristine")) {
                 input.classList.remove("pristine");
             }
+        }
+
+        function validatePassword() {
+            var input = document.getElementById("password");
 
             if (input.value === "") {
                 input.setAttribute("placeholder", "REQUIRED");
@@ -33,10 +38,6 @@
         function validateName() {
             var input = document.getElementById("username");
 
-            if (input.classList.contains("pristine")) {
-                input.classList.remove("pristine");
-            }
-
             if (input.value === "") {
                 input.setAttribute("placeholder", "REQUIRED");
 
@@ -50,9 +51,9 @@
         }
 
         function checkIfNameExists(name) {
-            params = "username=" + name;
+            var params = "username=" + name;
 
-            request = new ajaxRequest();
+            var request = new ajaxRequest();
 
             request.open("post", "/login/check", true);
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -87,8 +88,8 @@
         }
 
         function classChange() {
-            userinput = document.getElementById("username");
-            passinput = document.getElementById("password");
+            var userinput = document.getElementById("username");
+            var passinput = document.getElementById("password");
 
             if (userinput.classList.contains("invalid") || passinput.classList.contains("invalid")) {
                 document.getElementById("submit").disabled = true;
@@ -114,12 +115,24 @@
 
             return request;
         }
+
+        var close = document.getElementsByClassName("closebtn");
+
+        for (var i = 0; i < close.length; i++) {
+            close[i].onclick = function() {
+                var div = this.parentElement;
+                div.style.opacity = "0";
+                setTimeout(function() {
+                    div.style.display = "none";
+                }, 600);
+            }
+        }
     </script>
-    <form method="post" id="registration-form" novalidate="novalidate" class="required input-focus" action="/login/finalize">
+    <form method="post" id="login-form" novalidate="novalidate" class="required input-focus" action="/login/finalize">
         <div class="title primary">
             <span>Login</span>
         </div>
-        <div id="registration-input-container">
+        <div id="login-input-container">
             <div class="errors">
                 <noscript>
                     Javascript is disabled. Please enable it to use this site.
@@ -134,7 +147,8 @@
                        autocorrect="off"
                        spellcheck="false"
                        placeholder="Username"
-                       onblur="validateName()"
+                       oninput="validateName()"
+                       onblur="makeDirty(this); validateName()"
                        value="<?php echo $username ?>">
             </div>
             <div class="input-group">
@@ -146,12 +160,29 @@
                        autocorrect="off"
                        spellcheck="false"
                        placeholder="Password"
-                       onblur="validatePassword()"
+                       oninput="validatePassword()"
+                       onblur="makeDirty(this); validatePassword()"
                        value="<?php echo $password ?>">
             </div>
         </div>
         <div class="submit">
             <button type="submit" id="submit" class="primary" disabled>Login</button>
         </div>
+        <script type="text/javascript">
+            var userinput = document.getElementById("username");
+            var passinput = document.getElementById("password");
+
+            if (userinput.value !== "") {
+                userinput.classList.remove("pristine");
+
+                validateName();
+            }
+
+            if (passinput.value !== "") {
+                passinput.classList.remove("pristine");
+
+                validatePassword();
+            }
+        </script>
     </form>
 </div>
