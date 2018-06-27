@@ -12,6 +12,8 @@ use \Core\BaseView;
 
 class Logout extends \Core\BaseController
 {
+    protected $login_required = true;
+
     public function logoutAction() {
         $_SESSION = array();
 

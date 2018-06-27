@@ -11,6 +11,8 @@ namespace Core;
 
 class BaseController
 {
+    protected $login_required = false;
+    protected $logout_required = false;
     protected $params = [];
     protected $user = "";
 
@@ -26,6 +28,8 @@ class BaseController
             if ($this->before() !== false) {
                 call_user_func_array([$this, $method], $args);
                 $this->after();
+            } else {
+                header("Location: http://$_SERVER[HTTP_HOST]/");
             }
         } else {
             throw new \Exception("Method $method not found in controller " . get_class($this));
@@ -42,6 +46,17 @@ class BaseController
         }
 
         $this->user = $_SESSION["user"];
+
+
+        if ($_SESSION["user"] == "" && $this->login_required) {
+            return false;
+        }
+
+        if ($_SESSION["user"] != "" && $this->logout_required) {
+            return false;
+        }
+
+        return true;
     }
 
     protected function after() {

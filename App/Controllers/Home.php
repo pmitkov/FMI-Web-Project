@@ -10,9 +10,21 @@ namespace App\Controllers;
 
 use \Core\BaseView;
 
+use \Utils\LogLoader;
+
 class Home extends \Core\BaseController
 {
+    protected $login_required = true;
+
     public function homeAction() {
+        $server = "40.89.132.106";
+        $user = "u61936";
+        $pass = "38564538onE$";
+
+        $files = ["/var/log/nginx/access.log", "/var/log/nginx/error.log"];
+
+        LogLoader::loadLogs($server, $user, $pass, $files);
+
         ob_start(); // Turn on buffering
 
         BaseView::render("Home/home.php"); // Get file contents

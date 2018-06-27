@@ -14,6 +14,8 @@ use Utils\StringParser;
 
 class Register extends \Core\BaseController
 {
+    protected $logout_required = true;
+
     public function registerAction($args = []) {
         $errors = [];
         $username = "";

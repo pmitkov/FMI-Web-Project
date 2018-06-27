@@ -6,7 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Core\\' => array($baseDir . '/Core'),
-    'App\\' => array($baseDir . '/App'),
-    'Utils\\' => array($baseDir . '/Utils')
+    'phpseclib\\' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
+    'Core\\' => array($baseDir . "/Core"),
+    'App\\' => array($baseDir . "/App"),
+    'Utils\\' => array($baseDir . "/Utils")
 );

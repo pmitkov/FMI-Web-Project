@@ -15,6 +15,8 @@ use Utils\StringParser;
 
 class Login extends \Core\BaseController
 {
+    protected $logout_required = true;
+
     public function loginAction($args = []) {
         $error = "";
         $username = "";
