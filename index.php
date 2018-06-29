@@ -22,6 +22,9 @@ $router->add("login", ["controller" => "Login", "action" => "login"]);
 $router->add("logout", ["controller" => "Logout", "action" => "logout"]);
 $router->add("home", ["controller" => "Home", "action" => "home"]);
 $router->add("register", ["controller" => "Register", "action" => "register"]);
+$router->add("monitoring", ["controller" => "Monitoring", "action" => "monitor"]);
+$router->add("monitoring/{server:.+}", ["controller" => "Monitoring", "action" => "updateMonitoring"]);
+$router->add("raw", ["controller" => "RawLogs", "action" => "rawLogs"]);
 $router->add("{controller}/{action}");
 
 $router->dispatch($_SERVER["QUERY_STRING"]);

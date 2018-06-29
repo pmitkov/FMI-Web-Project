@@ -232,7 +232,7 @@ body {
     z-index: 1050;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
+    display: none;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -293,7 +293,7 @@ button.close {
 
 .modal-header .modal-title {
     color: #e9ecef;
-    font-size: 0.91667rem;
+    font-size: 1.3rem;
     font-family: Metropolis, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
     font-weight: 200;
     line-height: 1rem;
@@ -330,28 +330,15 @@ button.close {
 }
 
 .btn {
-    cursor: pointer;
-    display: inline-block;
-    -webkit-appearance: none !important;
-    border: 1px solid;
-    min-width: 3rem;
-    max-width: 15rem;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    background-color: #4CAF50;
+    color: white;
+    padding: 7px 15px;
     text-align: center;
     text-decoration: none;
-    text-transform: uppercase;
-    vertical-align: middle;
-    line-height: 1.5rem;
-    letter-spacing: 0.12em;
-    font-size: 0.5rem;
-    font-weight: 500;
-    height: 1.5rem;
-    padding: 0 0.5rem;
-    border-color: #49afd9;
-    background-color: transparent;
-    color: #49afd9;
+    display: inline-block;
+    font-size: 0.8rem;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
 .modal-footer .btn {
@@ -359,7 +346,7 @@ button.close {
 }
 
 .btn.btn-outline {
-    border-color: #49afd9;
+    border-color: green;
     background-color: transparent;
     color: #49afd9;
 }
@@ -368,6 +355,14 @@ button.close {
     border-color: #f442bc;
     background-color: #f442bc;
     color: #000;
+}
+
+.btn.btn-danger:hover {
+    background-color: #f44842;
+}
+
+.btn.btn-outline:hover {
+    background-color: #41f486;
 }
 
 .modal-backdrop {

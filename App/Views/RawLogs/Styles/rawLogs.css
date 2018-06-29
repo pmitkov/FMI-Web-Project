@@ -1,0 +1,134 @@
+/* main styles */
+.row {
+    display: inline-block;
+}
+
+.template-content {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.template-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.template-container {
+    padding-right: 0px;
+}
+
+.pane-content {
+    max-width: 1400px;
+}
+
+/* custom select box  styles */
+.custom-select {
+    position: relative;
+    font-family: Arial;
+    display: inline-block;
+    width: 400px;
+}
+.custom-select select {
+    display: none;
+}
+.select-selected {
+    background-color: DodgerBlue;
+}
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+
+.select-items div,.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+}
+
+.select-items {
+    position: absolute;
+    background-color: DodgerBlue;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.select-hide {
+    display: none;
+}
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* custom table styles */
+.custom-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    left: -100px;
+}
+
+.custom-table td, .custom-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.custom-table tr:nth-child(even){
+    background-color: #8941f4;
+}
+
+.custom-table tr:hover {
+    background-color: #b942f4;
+}
+
+.custom-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: red;
+    color: white;
+}
+
+/* pagination */
+.pagination {
+    display: inline-block;
+    position: absolute;
+}
+
+.pagination a {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    background-color: #2196F3;
+}
+
+.pagination a.active {
+    background-color: #0e1b3e;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #b942f4;
+}
+
+.pagination-container {
+    text-align: center;
+}

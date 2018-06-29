@@ -9,6 +9,21 @@
     <?php if (isset($view_styles)): ?>
     <link type="text/css" rel="stylesheet" href="http://localhost/<?php echo $view_styles ?>">
     <?php endif ?>
+
+    <script src="http://localhost/App/Views/Header/Scripts/smoothie.js"></script>
+    <script>
+        function showModal() {
+            var modal = document.getElementById("modal");
+
+            modal.style.display = "flex";
+        }
+
+        function hideModal() {
+            var modal = document.getElementById("modal");
+
+            modal.style.display = "none";
+        }
+    </script>
 </head>
 
 <body>
@@ -43,9 +58,9 @@
 
                     <div class="navbar-actions">
                         <a href="/user-profile" class="navbar-item">
-                            <div class="navbar-label default-styles"><?php echo "Hello,\t$user" ?></div>
+                            <div class="navbar-label default-styles"><?php echo "Hello, $user" ?></div>
                         </a>
-                        <a href="/logout" class="navbar-item">
+                        <a onclick="showModal()" class="navbar-item">
                             <div class="navbar-label default-styles">Logout</div>
                         </a>
                     </div>
@@ -85,11 +100,11 @@
         </div>
     </div>
 </div>
-<div class="modal">
+<div class="modal" id="modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button class="close">
+                <button class="close" onclick="hideModal()">
                     X
                 </button>
                 <h3 class="modal-title">Logout</h3>
@@ -98,8 +113,8 @@
                 <p>Are you sure you want to log out of this account?</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-outline" type="button">Cancel</button>
-                <button class="btn btn-danger" type="button">Logout</button>
+                <button class="btn btn-outline" type="button" onclick="hideModal()">Cancel</button>
+                <button class="btn btn-danger" type="button"  onclick="location.href='/logout'">Logout</button>
             </div>
         </div>
     </div>

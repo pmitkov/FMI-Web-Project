@@ -8,8 +8,6 @@
 
 namespace App\Controllers;
 
-use \Core\BaseView;
-
 class Logout extends \Core\BaseController
 {
     protected $login_required = true;

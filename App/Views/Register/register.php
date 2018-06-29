@@ -269,7 +269,7 @@
             </div>
         </div>
         <div class="submit">
-            <button type="submit" id="submit" class="primary">Register</button>
+            <button type="submit" id="submit" class="primary" disabled>Register</button>
         </div>
         <script type="text/javascript">
             var userinput = document.getElementById("username");
