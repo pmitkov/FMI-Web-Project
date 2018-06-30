@@ -12,14 +12,15 @@ use Core\BaseModel;
 
 class User extends BaseModel
 {
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->table_name = "users";
     }
 
     public function checkIfUserExists($username) {
-        $query = "SELECT * FROM users WHERE username='$username'";
+        $query = "SELECT * 
+                  FROM users 
+                  WHERE username='$username'";
         $result = $this->conn->query($query);
 
         if (!$result) {
@@ -34,7 +35,9 @@ class User extends BaseModel
     }
 
     public function checkIfEmailExists($email) {
-        $query = "SELECT * FROM users WHERE email='$email'";
+        $query = "SELECT * 
+                  FROM users
+                  WHERE email='$email'";
         $result = $this->conn->query($query);
 
         if (!$result) {
@@ -59,7 +62,9 @@ class User extends BaseModel
     }
 
     public function checkCredentials($username, $password) {
-        $query = "SELECT * FROM users WHERE username='$username'";
+        $query = "SELECT * 
+                  FROM users 
+                  WHERE username='$username'";
         $result = $this->conn->query($query);
 
         if (!$result) {

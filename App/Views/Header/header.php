@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Angular 4</title>
+    <title>WEB 2018</title>
     <meta charset="UTF-8">
     <link type="text/css" rel="stylesheet" href="http://localhost/App/Views/Header/Styles/header.css">
     <?php if (isset($view_styles)): ?>
@@ -11,6 +11,7 @@
     <?php endif ?>
 
     <script src="http://localhost/App/Views/Header/Scripts/smoothie.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script>
         function showModal() {
             var modal = document.getElementById("modal");
@@ -45,8 +46,8 @@
                         <a href="/home" class="navbar-item">
                             <div class="navbar-label default-styles">Home</div>
                         </a>
-                        <a href="/logs" class="navbar-item">
-                            <div class="navbar-label default-styles">Logs</div>
+                        <a href="/charts" class="navbar-item">
+                            <div class="navbar-label default-styles">Log Charts</div>
                         </a>
                         <a href="/raw" class="navbar-item">
                             <div class="navbar-label default-styles">Raw Logs</div>

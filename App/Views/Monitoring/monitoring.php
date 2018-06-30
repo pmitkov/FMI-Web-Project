@@ -39,16 +39,16 @@
             var memoryUtilization;
 
             function beginMonitoring(serverName) {
-                networkGraph = new SmoothieChart({millisPerPixel: 500});
+                networkGraph = new SmoothieChart({millisPerPixel: 100});
                 networkGraph.streamTo(document.getElementById("network"));
 
-                diskGraph = new SmoothieChart({millisPerPixel: 500});
+                diskGraph = new SmoothieChart({millisPerPixel: 100});
                 diskGraph.streamTo(document.getElementById("disk"));
 
-                cpuGraph = new SmoothieChart({millisPerPixel: 500});
+                cpuGraph = new SmoothieChart({millisPerPixel: 100});
                 cpuGraph.streamTo(document.getElementById("cpu"));
 
-                memoryGraph = new SmoothieChart({millisPerPixel: 500});
+                memoryGraph = new SmoothieChart({millisPerPixel: 100});
                 memoryGraph.streamTo(document.getElementById("memory"));
 
                 networkInput = new TimeSeries();

@@ -129,6 +129,35 @@
     background-color: #b942f4;
 }
 
+.pagination a:hover {
+    cursor: pointer;
+}
+
 .pagination-container {
     text-align: center;
+}
+
+.not-active {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    background-color: darkgray !important;
+}
+
+/* custom button styles */
+.custom-button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.custom-button:hover {
+    background-color: #42aaf4;
 }

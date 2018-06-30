@@ -12,14 +12,14 @@ use Core\BaseModel;
 
 class Host extends BaseModel
 {
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->table_name = "hosts";
     }
 
     public function getHostsForUser($owner) {
-        $query = "SELECT * FROM hosts WHERE owner='$owner'";
+        $query = "SELECT * FROM hosts 
+                  WHERE owner='$owner'";
         $result = $this->conn->query($query);
 
         if (!$result) {
@@ -36,7 +36,8 @@ class Host extends BaseModel
     }
 
     public function getHostByName($serverName) {
-        $query = "SELECT * FROM hosts WHERE server='$serverName'";
+        $query = "SELECT * FROM hosts 
+                  WHERE server='$serverName'";
         $result = $this->conn->query($query);
 
         if (!$result) {

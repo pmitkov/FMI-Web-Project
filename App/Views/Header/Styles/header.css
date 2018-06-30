@@ -265,6 +265,10 @@ body {
     padding: 0 0 1rem 0;
 }
 
+.modal-body {
+    height: 3rem;
+}
+
 .modal-header .close {
     margin-top: -0.0416667rem;
     margin-right: -0.208333rem;

@@ -76,8 +76,7 @@ class Login extends \Core\BaseController
         }
     }
 
-    public function finalizeAction()
-    {
+    public function finalizeAction() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (isset($_POST["username"]) && isset($_POST["password"])) {
                 $users = new User();
